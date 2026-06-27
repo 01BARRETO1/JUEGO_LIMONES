@@ -19,7 +19,8 @@ const ALTO_LIMON=20;
 function iniciar(){
     dibujarSuelo();
     dibujarPersonaje();
-    dibujarLimon();
+    //dibujarLimon();
+    aparecerLimon();
 }
 
 function dibujarSuelo(){
@@ -69,7 +70,19 @@ function bajarMelon(){
 function detectarColision(){
     if(limonX+ANCHO_LIMON>personajeX && limonX< personajeX+ANCHURA_PERSONAJE
         && limonY+ALTO_LIMON>personajeY && limonY< personajeY+ALTURA_PERSONAJE){
-        alert("POKEMON ATRAPADO");
+        //alert("POKEMON ATRAPADO");
+        aparecerLimon();
 
     }
+}
+
+function probarAleatorio(){
+    let aleatorio=generarAleatorio(10,80);
+    console.log(aleatorio);
+}
+
+function aparecerLimon(){
+    limonX= generarAleatorio(0,canvas.width-ANCHO_LIMON);
+    limonY= 0;
+    actualizarPantalla();
 }
