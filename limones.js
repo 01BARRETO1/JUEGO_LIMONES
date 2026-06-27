@@ -11,6 +11,10 @@ let personajeY=canvas.height-(ALTURA_SUELO+ALTURA_PERSONAJE);
 //variables para limon
 let limonX=canvas.width/2;
 let limonY=0;
+//Variable puntaje
+let puntaje=0;
+//variable vidas
+let vidas=3;
 //constantes de limon 
 const ANCHO_LIMON=20;
 const ALTO_LIMON=20;
@@ -36,13 +40,13 @@ function dibujarPersonaje(){
 function moverIzquierda(){
     personajeX=personajeX-10;
     actualizarPantalla();
-    detectarColision();
+    detectarAtrapado();
 }
 //moverDerecha
 function moverDerecha(){
     personajeX=personajeX+10;
     actualizarPantalla();
-    detectarColision();
+    detectarAtrapado();
 }
 function actualizarPantalla(){
     limpiarCanva();
@@ -64,22 +68,33 @@ function dibujarLimon(){
 function bajarMelon(){
     limonY=limonY+10;
     actualizarPantalla();
-    detectarColision();
+    detectarAtrapado();
+    detectarPiso();
 }
 
-function detectarColision(){
+function detectarAtrapado(){
     if(limonX+ANCHO_LIMON>personajeX && limonX< personajeX+ANCHURA_PERSONAJE
         && limonY+ALTO_LIMON>personajeY && limonY< personajeY+ALTURA_PERSONAJE){
         //alert("POKEMON ATRAPADO");
         aparecerLimon();
+        puntaje=puntaje+1;
+        mostrarEnSpam("txtPuntaje",puntaje);
 
     }
 }
 
-function probarAleatorio(){
+function detectarPiso(){
+    if(limonY+ALTO_LIMON==canvas.height-ALTURA_SUELO){
+        aparecerLimon();
+        vidas=vidas-1
+        mostrarEnSpam("txtVidas",vidas);
+    }
+}
+
+/* function probarAleatorio(){
     let aleatorio=generarAleatorio(10,80);
     console.log(aleatorio);
-}
+} */
 
 function aparecerLimon(){
     limonX= generarAleatorio(0,canvas.width-ANCHO_LIMON);
