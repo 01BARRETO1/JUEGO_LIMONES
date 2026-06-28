@@ -90,25 +90,29 @@ function detectarAtrapado(){
     if(limonX+ANCHO_LIMON>personajeX && limonX< personajeX+ANCHURA_PERSONAJE
         && limonY+ALTO_LIMON>personajeY && limonY< personajeY+ALTURA_PERSONAJE){
         //alert("POKEMON ATRAPADO");
-        aparecerLimon();
         puntaje=puntaje+1;
         mostrarEnSpam("txtPuntaje",puntaje);
-
-        if(puntaje>=3 && vidas>=1){
-            velocidadCaida=150;
-            setInterval(bajarMelon,velocidadCaida);
-            
-        }else if(puntaje>=6 && vidas>=1){
-            velocidadCaida=100;
-            setInterval(bajarMelon,velocidadCaida);
-        }else if(puntaje==10 && vidas>=1){
+        if(puntaje>=10 && vidas>=1){
             clearInterval(intervalo);
             alert("YOU ARE WINNER!!!");
             clearInterval(intervalo);
+            return;
+        }
+        aparecerLimon();
+        
+
+        if(puntaje>=3 && vidas>=1){
+            velocidadCaida=150;
+            clearInterval(intervalo);
+            intervalo=setInterval(bajarMelon,velocidadCaida);
+            
+        }else if(puntaje>=6 && vidas>=1){
+            velocidadCaida=100;
+            clearInterval(intervalo);
+            intervalo=setInterval(bajarMelon,velocidadCaida);
         }else if(puntaje>=0 && vidas == 0){
             clearInterval(intervalo);
             console.log("Perdiste")
-            clearInterval(intervalo);
         }
 
     }
@@ -141,4 +145,17 @@ function aparecerLimon(){
     limonX= generarAleatorio(0,canvas.width-ANCHO_LIMON);
     limonY= 0;
     actualizarPantalla();
+}
+
+function reiniciar(){
+    vidas=3
+    mostrarEnSpam("txtVidas",vidas);
+    puntaje=0;
+    mostrarEnSpam("txtPuntaje",puntaje);
+    velocidadCaida=200;
+    clearInterval(intervalo);
+    intervalo=setInterval(bajarMelon,velocidadCaida);
+    iniciar();
+    
+
 }
