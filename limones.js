@@ -76,12 +76,25 @@ function bajarMelon(){
 }
 
 function detectarAtrapado(){
+    //velocidad del limon
+    
+    //
     if(limonX+ANCHO_LIMON>personajeX && limonX< personajeX+ANCHURA_PERSONAJE
         && limonY+ALTO_LIMON>personajeY && limonY< personajeY+ALTURA_PERSONAJE){
         //alert("POKEMON ATRAPADO");
         aparecerLimon();
         puntaje=puntaje+1;
         mostrarEnSpam("txtPuntaje",puntaje);
+        if(puntaje==3){
+            velocidadCaida=150;
+            setInterval(bajarMelon,velocidadCaida);
+
+        }else if(puntaje==6){
+            velocidadCaida=100;
+            setInterval(bajarMelon,velocidadCaida);
+        }else if(puntaje==10){
+            alert("YOU ARE WINNER!!!");
+        }
 
     }
 }
