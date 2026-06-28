@@ -20,10 +20,12 @@ let velocidadCaida=200;
 //constantes de limon 
 const ANCHO_LIMON=20;
 const ALTO_LIMON=20;
-
+//variable setInterval
+let intervalo=setInterval(bajarMelon,velocidadCaida);
 
 function iniciar(){
-    setInterval(bajarMelon,velocidadCaida);//primer parametro: funcion, segundo parametro: tiempo en milisegundos
+    intervalo;
+    //setInterval(bajarMelon,velocidadCaida);//primer parametro: funcion, segundo parametro: tiempo en milisegundos
     dibujarSuelo();
     dibujarPersonaje();
     //dibujarLimon();
@@ -69,13 +71,19 @@ function dibujarLimon(){
 }
 
 function bajarMelon(){
-    limonY=limonY+10;
-    actualizarPantalla();
-    detectarAtrapado();
-    detectarPiso();
+    if(vidas===0){
+        clearInterval(intervalo);
+    }else if (vidas>0){
+        limonY=limonY+10;
+        actualizarPantalla();
+        detectarAtrapado();
+        detectarPiso();
+    }
+    
 }
 
 function detectarAtrapado(){
+    
     //velocidad del limon
     
     //
@@ -85,27 +93,40 @@ function detectarAtrapado(){
         aparecerLimon();
         puntaje=puntaje+1;
         mostrarEnSpam("txtPuntaje",puntaje);
-        if(puntaje==3){
+
+        if(puntaje>=3 && vidas>=1){
             velocidadCaida=150;
             setInterval(bajarMelon,velocidadCaida);
-
-        }else if(puntaje==6){
+            
+        }else if(puntaje>=6 && vidas>=1){
             velocidadCaida=100;
             setInterval(bajarMelon,velocidadCaida);
-        }else if(puntaje==10){
+        }else if(puntaje==10 && vidas>=1){
+            clearInterval(intervalo);
             alert("YOU ARE WINNER!!!");
+            clearInterval(intervalo);
+        }else if(puntaje>=0 && vidas == 0){
+            clearInterval(intervalo);
+            console.log("Perdiste")
+            clearInterval(intervalo);
         }
 
     }
 }
 
 function detectarPiso(){
+    if(vidas==0){
+        clearInterval(intervalo);
+    }
     if(limonY+ALTO_LIMON==canvas.height-ALTURA_SUELO){
         aparecerLimon();
         vidas=vidas-1
         mostrarEnSpam("txtVidas",vidas);
-        if(vidas==0){
+        if(vidas<=0 && puntaje>=0){
+
+            clearInterval(intervalo);
             alert("Perdiste!");
+            clearInterval(intervalo);
 
         }
     }
