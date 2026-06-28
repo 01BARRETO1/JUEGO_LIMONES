@@ -15,12 +15,15 @@ let limonY=0;
 let puntaje=0;
 //variable vidas
 let vidas=3;
+//variable velocidadCaida
+let velocidadCaida=200;
 //constantes de limon 
 const ANCHO_LIMON=20;
 const ALTO_LIMON=20;
 
 
 function iniciar(){
+    setInterval(bajarMelon,velocidadCaida);//primer parametro: funcion, segundo parametro: tiempo en milisegundos
     dibujarSuelo();
     dibujarPersonaje();
     //dibujarLimon();
@@ -88,6 +91,10 @@ function detectarPiso(){
         aparecerLimon();
         vidas=vidas-1
         mostrarEnSpam("txtVidas",vidas);
+        if(vidas==0){
+            alert("Perdiste!");
+
+        }
     }
 }
 
