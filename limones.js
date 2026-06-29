@@ -101,7 +101,7 @@ function detectarAtrapado(){
         aparecerLimon();
         
 
-        if(puntaje>=3 && vidas>=1){
+        if(puntaje>=3 && puntaje<=5 && vidas>=1){
             velocidadCaida=150;
             clearInterval(intervalo);
             intervalo=setInterval(bajarMelon,velocidadCaida);
