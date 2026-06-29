@@ -199,3 +199,19 @@ footer{
     font-size:15px;
 
 }
+
+.pie{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+
+    margin-top:25px;
+    color:#777;
+    font-size:15px;
+}
+
+.logo{
+    width:222px;
+    height:auto;
+}
