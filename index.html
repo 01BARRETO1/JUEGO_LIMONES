@@ -1,28 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>limones</title>
-  <link rel="stylesheet" href="limones.css"/>
-  <script src="utils.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atrapar Limones</title>
+
+    <link rel="stylesheet" href="limones.css">
+    <script src="utils.js"></script>
 </head>
-<body onload="iniciar()" >
-  <div class="contenedor">
-    <h1>Atrapar Limones</h1>
-    <p>Si del cielo te caen limones ..... </p>
-    <h2>Autor: CARLOS BARRETO</h2>
-    <canvas id="areaJuego" width="600" height="400"></canvas>
-    <div class="panel">
-      <p>Puntaje: <span id="txtPuntaje">0</span></p>
-      <p>Vidas: <span id="txtVidas">3</span></p>
+
+<body onload="iniciar()">
+
+    <div class="contenedor">
+
+        <header class="cabecera">
+            <h1>🍋 Atrapar Limones</h1>
+            <p class="descripcion">
+                ¡Atrapa la mayor cantidad de limones antes de perder todas tus vidas!
+            </p>
+        </header>
+
+        <section class="marcador">
+
+            <div class="tarjeta">
+                <h3>Puntaje</h3>
+                <span id="txtPuntaje">0</span>
+            </div>
+
+            <div class="tarjeta">
+                <h3>Vidas</h3>
+                <span id="txtVidas">3</span>
+            </div>
+
+        </section>
+
+        <section class="juego">
+            <canvas id="areaJuego" width="600" height="400"></canvas>
+        </section>
+
+        <section class="botones">
+
+            <button onclick="moverIzquierda()">
+                ⬅ Izquierda
+            </button>
+
+            <button onclick="moverDerecha()">
+                Derecha ➡
+            </button>
+
+            <button class="reiniciar" onclick="reiniciar()">
+                🔄 Reiniciar
+            </button>
+
+        </section>
+
+        <footer>
+            <p>Autor: CARLOS BARRETO</p>
+        </footer>
+
     </div>
-    <div class="botones">
-      <button onclick="moverIzquierda();">Izquierda</button>
-      <button onclick="moverDerecha();">Derecha</button>
-      <!-- <button onclick="bajarMelon();">Bajar limon</button> -->
-      <!-- <button onclick="probarAleatorio();">PROBAR ALEATORIO</button> -->
-      <button onclick="reiniciar();">Reiniciar</button>
-    </div>
-  </div>
-  <script src="limones.js"></script>
-  </body>
+
+    <script src="limones.js"></script>
+
+</body>
 </html>
