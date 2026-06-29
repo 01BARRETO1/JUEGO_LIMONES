@@ -2,8 +2,9 @@ let canvas= document.getElementById("areaJuego");
 let ctx=canvas.getContext("2d");
 
 const ALTURA_SUELO=20;
-let ALTURA_PERSONAJE=120;
-let ANCHURA_PERSONAJE=50;
+const ALTURA_PERSONAJE=120;
+const ANCHURA_PERSONAJE=50;
+
 
 
 
@@ -161,11 +162,11 @@ function reiniciar(){
     
 }
 
-function desaparecerPersonaje(){
+/* function desaparecerPersonaje(){
 
 
     ANCHURA_PERSONAJE=0
     ALTURA_PERSONAJE=0
 
     ctx.clearRect(0,0,ANCHURA_PERSONAJE,ALTURA_PERSONAJE);
-}
+} */
