@@ -2,8 +2,10 @@ let canvas= document.getElementById("areaJuego");
 let ctx=canvas.getContext("2d");
 
 const ALTURA_SUELO=20;
-const ALTURA_PERSONAJE=60;
-const ANCHURA_PERSONAJE=30;
+let ALTURA_PERSONAJE=120;
+let ANCHURA_PERSONAJE=50;
+
+
 
 let personajeX=canvas.width/2
 let personajeY=canvas.height-(ALTURA_SUELO+ALTURA_PERSONAJE);
@@ -38,7 +40,7 @@ function dibujarSuelo(){
 }
 
 function dibujarPersonaje(){
-    ctx.fillStyle="#0729be";
+    ctx.fillStyle="#b71442";
     ctx.fillRect(personajeX,personajeY,ANCHURA_PERSONAJE,ALTURA_PERSONAJE);
 }
 
@@ -112,7 +114,7 @@ function detectarAtrapado(){
             intervalo=setInterval(bajarMelon,velocidadCaida);
         }else if(puntaje>=0 && vidas == 0){
             clearInterval(intervalo);
-            console.log("Perdiste")
+            console.log("GAME OVER!");
         }
 
     }
@@ -129,7 +131,7 @@ function detectarPiso(){
         if(vidas<=0 && puntaje>=0){
 
             clearInterval(intervalo);
-            alert("Perdiste!");
+            alert("GAME OVER!");
             clearInterval(intervalo);
 
         }
@@ -157,5 +159,13 @@ function reiniciar(){
     intervalo=setInterval(bajarMelon,velocidadCaida);
     iniciar();
     
+}
 
+function desaparecerPersonaje(){
+
+
+    ANCHURA_PERSONAJE=0
+    ALTURA_PERSONAJE=0
+
+    ctx.clearRect(0,0,ANCHURA_PERSONAJE,ALTURA_PERSONAJE);
 }
