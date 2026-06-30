@@ -25,6 +25,8 @@ const ANCHO_LIMON=20;
 const ALTO_LIMON=20;
 //variable setInterval
 let intervalo=setInterval(bajarMelon,velocidadCaida);
+//variable color personaje
+
 
 function iniciar(){
     intervalo;
@@ -36,11 +38,12 @@ function iniciar(){
 }
 
 function dibujarSuelo(){
-    ctx.fillStyle="#40114A";
+    ctx.fillStyle="#565559";
     ctx.fillRect(0,canvas.height-ALTURA_SUELO,canvas.width,ALTURA_SUELO);
 }
 
 function dibujarPersonaje(){
+    
     ctx.fillStyle="#b71442";
     ctx.fillRect(personajeX,personajeY,ANCHURA_PERSONAJE,ALTURA_PERSONAJE);
 }
@@ -87,12 +90,15 @@ function bajarMelon(){
 
 function detectarAtrapado(){
     
-    //velocidad del limon
+    
     
     //
     if(limonX+ANCHO_LIMON>personajeX && limonX< personajeX+ANCHURA_PERSONAJE
         && limonY+ALTO_LIMON>personajeY && limonY< personajeY+ALTURA_PERSONAJE){
+            
+            
         //alert("POKEMON ATRAPADO");
+
         puntaje=puntaje+1;
         mostrarEnSpam("txtPuntaje",puntaje);
         if(puntaje>=10 && vidas>=1){
@@ -170,3 +176,4 @@ function reiniciar(){
 
     ctx.clearRect(0,0,ANCHURA_PERSONAJE,ALTURA_PERSONAJE);
 } */
+
